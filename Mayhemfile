@@ -1,6 +1,5 @@
-project: rnshah9/kvazaar
+project: kvazaar
 target: kvazaar
-tests: null
 
 cmds:
   - cmd: /kvazaar/src/kvazaar -i @@ -o out --input-res=832x480

@@ -10,7 +10,7 @@ RUN apt-get update \
     && apt-get install -y $REQUIRED_PACKAGES \
     && cd kvazaar \
     && ./autogen.sh \
-    && ./configure --disable-shared \
+    && ./configure --disable-shared --prefix=/install\
     && make -j8\
     && make install \
     && AUTOINSTALLED_PACKAGES=`apt-mark showauto` \
@@ -19,11 +19,5 @@ RUN apt-get update \
     && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 
-RUN mkdir -p /deps
-RUN ldd /kvazaar/src/kvazaar | tr -s '[:blank:]' '\n' | grep '^/' | xargs -I % sh -c 'cp % /deps;'
-
 FROM ubuntu:18.04 as package
-
-COPY --from=builder /deps /deps
-COPY --from=builder /kvazaar/src/kvazaar /kvazaar/src/kvazaar
-ENV LD_LIBRARY_PATH=/deps
+COPY --from=builder /install /install

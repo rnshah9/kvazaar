@@ -2,4 +2,4 @@ project: kvazaar
 target: kvazaar
 
 cmds:
-  - cmd: /kvazaar/src/kvazaar -i @@ -o out --input-res=832x480
+  - cmd: /install/bin/kvazaar -i @@ -o out --input-res=832x480

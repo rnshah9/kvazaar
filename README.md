@@ -2,7 +2,7 @@ Kvazaar
 =======
 An open-source HEVC encoder licensed under 3-clause BSD
 
-Join channel [#ultravideo](https://web.libera.chat/#ultravideo) in [Libera.Chat](https://libera.chat/) IRC network to contact us.
+Join channel [#ultravideo](https://web.libera.chat/#ultravideo) in [Libera.Chat](https://libera.chat/) IRC network to contact us or come to our Discord [![Discord](https://img.shields.io/discord/973260924288901140?style=plastic)](https://discord.gg/fZpub7BPUA)
 
 Kvazaar is still under development. Speed and RD-quality will continue to improve.
 
@@ -242,6 +242,16 @@ Compression tools:
       --ml-pu-depth-intra    : Predict the pu-depth-intra using machine
                                 learning trees, overrides the
                                 --pu-depth-intra parameter. [disabled]
+      --(no-)combine-intra-cus: Whether the encoder tries to code a cu
+                                   on lower depth even when search is not
+                                   performed on said depth. Should only
+                                   be disabled if cus absolutely must not
+                                   be larger than limited by the search.
+                                   [enabled]
+      --force-inter          : Force the encoder to use inter always.
+                               This is mostly for debugging and is not
+                               guaranteed to produce sensible bitstream or
+                               work at all. [disabled]
       --tr-depth-intra <int> : Transform split depth for intra blocks [0]
       --(no-)bipred          : Bi-prediction [disabled]
       --cu-split-termination <string> : CU split search termination [zero]
@@ -296,8 +306,8 @@ Parallel processing:
                                    - u<int>: Number of tile columns of uniform
                                              width.
       --tiles-height-split <string>|u<int> :
-                                   - <string>: A comma-separated list of tile row
-                                               column pixel coordinates.
+                                   - <string>: A comma-separated list of tile
+                                               row column pixel coordinates.
                                    - u<int>: Number of tile rows of uniform
                                              height.
       --slices <string>      : Control how slices are used.

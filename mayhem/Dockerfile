@@ -18,7 +18,9 @@ RUN apt-get update \
     && apt-get autoremove -y \
     && rm -rf /var/lib/{apt,dpkg,cache,log}/
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y clang
+RUN clang++ /kvazaar/mayhem/fuzz_kvz_get_scaled_qp.cpp -fsanitize=fuzzer,address -I /kvazaar/mayhem -L /install/lib/ -l:libkvazaar.a -o /fuzz
 
 
-# FROM ubuntu:18.04 as package
-# COPY --from=builder /install /install
+FROM ubuntu:18.04 as package
+COPY --from=builder /install /install
+COPY --from=builder /fuzz /fuzz_kvz_get_scaled_qp

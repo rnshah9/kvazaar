@@ -51,7 +51,8 @@ jobs:
       fail-fast: false
       matrix:
         mayhemfile:
-          - mayhem/Mayhemfile
+          - mayhem/Mayhemfile_kvazaar
+          - mayhem/Mayhemfile_get_scaled_qp
 
     steps:
       - uses: actions/checkout@v2

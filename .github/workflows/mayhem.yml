@@ -52,7 +52,7 @@ jobs:
       matrix:
         mayhemfile:
           - mayhem/Mayhemfile_kvazaar
-          - mayhem/Mayhemfile_get_scaled_qp
+          - mayhem/Mayhemfile_kvz_get_scaled_qp
 
     steps:
       - uses: actions/checkout@v2

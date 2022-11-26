@@ -1,0 +1,6 @@
+project: kvazaar
+target: kvz-get-scaled-qp
+
+cmds:
+  - cmd: /fuzz_kvz_get_scaled_qp
+    libfuzzer: true

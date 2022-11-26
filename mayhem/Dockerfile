@@ -17,7 +17,8 @@ RUN apt-get update \
     && apt-get remove --purge --force-yes -y $REQUIRED_PACKAGES $AUTOINSTALLED_PACKAGES \
     && apt-get autoremove -y \
     && rm -rf /var/lib/{apt,dpkg,cache,log}/
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y clang
 
 
-FROM ubuntu:18.04 as package
-COPY --from=builder /install /install
+# FROM ubuntu:18.04 as package
+# COPY --from=builder /install /install
